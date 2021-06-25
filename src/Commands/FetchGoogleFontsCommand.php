@@ -18,9 +18,11 @@ class FetchGoogleFontsCommand extends Command
         collect(config('google-fonts.fonts'))
             ->keys()
             ->each(function (string $font) {
+                $forceDownload = true;
+
                 $this->info("Fetching `{$font}`...");
 
-                app(GoogleFonts::class)->load($font, forceDownload: true);
+                app(GoogleFonts::class)->load($font, $forceDownload);
             });
 
         $this->info('All done!');
