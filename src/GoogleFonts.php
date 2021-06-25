@@ -10,14 +10,20 @@ use RuntimeException;
 
 class GoogleFonts
 {
-    public function __construct(
-        protected Filesystem $filesystem,
-        protected string $path,
-        protected bool $inline,
-        protected bool $fallback,
-        protected string $userAgent,
-        protected array $fonts,
-    ) {
+    protected Filesystem $filesystem;
+    protected string $path;
+    protected bool $inline;
+    protected bool $fallback;
+    protected string $userAgent;
+    protected array $fonts;
+    
+    public function __construct($filesystem, $path, $inline, $fallback, $userAgent, $fonts) {
+        $this->filesystem = $filesystem;
+        $this->path = $path;
+        $this->inline = $inline;
+        $this->fallback = $fallback;
+        $this->userAgent = $userAgent;
+        $this->fonts = $fonts;
     }
 
     public function load(string $font = 'default', bool $forceDownload = false): Fonts
