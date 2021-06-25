@@ -45,7 +45,7 @@ class GoogleFonts
                 throw $exception;
             }
 
-            return new Fonts(googleFontsUrl: $url);
+            return new Fonts($url);
         }
     }
 
@@ -58,10 +58,10 @@ class GoogleFonts
         $localizedCss = $this->filesystem->get($this->path($url, 'fonts.css'));
 
         return new Fonts(
-            googleFontsUrl: $url,
-            localizedUrl: $this->filesystem->url($this->path($url, 'fonts.css')),
-            localizedCss: $localizedCss,
-            preferInline: $this->inline,
+            $url,
+            $this->filesystem->url($this->path($url, 'fonts.css')),
+            $localizedCss,
+            $this->inline,
         );
     }
 
@@ -91,10 +91,10 @@ class GoogleFonts
         $this->filesystem->put($this->path($url, 'fonts.css'), $localizedCss);
 
         return new Fonts(
-            googleFontsUrl: $url,
-            localizedUrl: $this->filesystem->url($this->path($url, 'fonts.css')),
-            localizedCss: $localizedCss,
-            preferInline: $this->inline,
+            $url,
+            $this->filesystem->url($this->path($url, 'fonts.css')),
+            $localizedCss,
+            $this->inline,
         );
     }
 
